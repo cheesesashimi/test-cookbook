@@ -1,0 +1,25 @@
+---
+driver:
+  name: vagrant
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: win2012r2
+    driver_config:
+      box: windows-2012r2-standard
+      box_url: http://server.local/vagrant/virtualbox/windows-2012r2-standard.box
+      gui: true
+      communicator: winrm
+      customize:
+        memory: 2048
+        cpus: 2
+    transport:
+      name: winrm
+
+suites:
+  - name: default
+    run_list:
+      - test-cookbook 
+
